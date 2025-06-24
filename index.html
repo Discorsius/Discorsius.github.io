@@ -1,27 +1,113 @@
 <!DOCTYPE html>
-<html lang="de">
-
+<html>
 <head>
+            <style>/* Grundlayout und Schrift */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+/* Verstecke Elemente */
+.hidden {
+  display: none;
+}
+
+/* Buttons */
+button {
+  background: brown;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #8B4513;
+}
+
+/* Spielerstatus (linke Leiste) */
+#playerList {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  width: 200px;
+  text-align: left;
+  font-size: 16px;
+}
+
+/* Vertikale Trennlinie */
+.divider {
+  position: absolute;
+  left: 230px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+}
+
+/* Hauptbereich / Szenencontainer */
+#gameContainer {
+  margin-left: 250px;
+  /* Platz für Linke Leiste + Trennlinie */
+  padding: 20px;
+}
+
+/* Szene-Container */
+.scene {
+  margin-top: 20px;
+}
+
+/* Würfel Buttons */
+.dice-buttons button {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
+
+/* Timer Anzeige */
+.timer {
+  font-weight: bold;
+  color: darkred;
+}
+
+/* Kartentyp Farben */
+#cardTypeText {
+  padding: 15px;
+  font-size: 20px;
+  color: white;
+}</style>
+        </head>
+        <body>
+            
+
+
+
   <meta charset="UTF-8">
   <title>Luthers Pfad</title>
   <link rel="stylesheet" href="styles.css">
-</head>
 
-<body>
+
+
   <!-- Szene 1: Spielerzahl wählen -->
   <div id="homescreen">
-    <h1>Luthers Pfad</h1>
-    <h2>Spieleranzahl wählen:</h2>
-    <button onclick="setPlayerCount(2)">2 Spieler</button>
-    <button onclick="setPlayerCount(3)">3 Spieler</button>
-    <button onclick="setPlayerCount(4)">4 Spieler</button>
+    <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Luthers Pfad</font></font></h1>
+    <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spieleranzahl wählen:</font></font></h2>
+    <button onclick="setPlayerCount(2)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2 Spieler</font></font></button>
+    <button onclick="setPlayerCount(3)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3 Spieler</font></font></button>
+    <button onclick="setPlayerCount(4)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4 Spieler</font></font></button>
   </div>
 
   <!-- Szene 2-5: Namenseingabe (sequentiell) -->
   <div id="nameInput" class="hidden">
-    <h2 id="namePrompt">Spieler ? , wie heißt du?</h2>
+    <h2 id="namePrompt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Spieler? , wie heißt du?</font></font></h2>
     <input type="text" id="playerNameInput" maxlength="12" pattern="[A-Za-z]+">
-    <button onclick="nextName()">Weiter</button>
+    <button onclick="nextName()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Weiter</font></font></button>
   </div>
 
   <!-- Gesamter Spielbereich -->
@@ -42,19 +128,19 @@
       <div id="diceRoll" class="scene hidden">
         <h2 id="diceRollText"></h2>
         <div class="dice-buttons">
-          <button onclick="rollDice(1)">1</button>
-          <button onclick="rollDice(2)">2</button>
-          <button onclick="rollDice(3)">3</button>
-          <button onclick="rollDice(4)">4</button>
-          <button onclick="rollDice(5)">5</button>
-          <button onclick="rollDice(6)">6</button>
+          <button onclick="rollDice(1)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></button>
+          <button onclick="rollDice(2)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></button>
+          <button onclick="rollDice(3)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></button>
+          <button onclick="rollDice(4)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font></button>
+          <button onclick="rollDice(5)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5</font></font></button>
+          <button onclick="rollDice(6)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">6</font></font></button>
         </div>
       </div>
       <!-- Szene 8: Kartencode eingeben -->
       <div id="eventCheck" class="scene hidden">
-        <h2>Kartencode eingeben (3-stellig):</h2>
+        <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kartencode eingeben (3-stellig):</font></font></h2>
         <input type="text" id="cardCodeInput" maxlength="3">
-        <button onclick="checkEvent()">Prüfen</button>
+        <button onclick="checkEvent()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prüfen</font></font></button>
       </div>
       <!-- Szene 9: Kartentyp anzeigen -->
       <div id="cardType" class="scene hidden">
@@ -62,28 +148,28 @@
       </div>
       <!-- Szene 9a: Quizfrage (bei Kartencode 001) -->
       <div id="questionArea" class="scene hidden">
-        <h2>Frage:</h2>
+        <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Problem:</font></font></h2>
         <p id="questionText"></p>
         <div id="answerOptions"></div>
-        <p class="timer">Zeit: <span id="questionTimer">9</span> Sekunden</p>
+        <p class="timer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Zeit: </font></font><span id="questionTimer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">9</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Sekunden</font></font></p>
       </div>
       <!-- Szene 9b: Ereigniskarte Aktion (bei Kartencode 002) -->
       <div id="eventAction" class="scene hidden">
-        <h2>Ereigniskarte Aktion</h2>
-        <p id="eventActionText">Die Kirche droht mit Bann! Würfle eine gerade Zahl, sonst gehe 2 Felder zurück.</p>
+        <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ereigniskarte Aktion</font></font></h2>
+        <p id="eventActionText"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Die Kirche droht mit Bann! Würfle eine gerade Zahl, sonst gehe 2 Felder zurück.</font></font></p>
         <div class="dice-buttons">
-          <button onclick="rollEventDice(1)">1</button>
-          <button onclick="rollEventDice(2)">2</button>
-          <button onclick="rollEventDice(3)">3</button>
-          <button onclick="rollEventDice(4)">4</button>
-          <button onclick="rollEventDice(5)">5</button>
-          <button onclick="rollEventDice(6)">6</button>
+          <button onclick="rollEventDice(1)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></button>
+          <button onclick="rollEventDice(2)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></button>
+          <button onclick="rollEventDice(3)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></button>
+          <button onclick="rollEventDice(4)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font></button>
+          <button onclick="rollEventDice(5)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5</font></font></button>
+          <button onclick="rollEventDice(6)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">6</font></font></button>
         </div>
       </div>
       <!-- Szene 9c: Glückskarte Nachricht (bei Kartencode 003) -->
       <div id="luckMessage" class="scene hidden">
-        <h2>Glückskarte</h2>
-        <p id="luckText">Die Kirche hat dich erneut aufgenommen! Gehe 3 Felder vor.</p>
+        <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Glückskarte</font></font></h2>
+        <p id="luckText"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Die Kirche hat dich erneut aufgenommen! Gehe 3 Felder vor.</font></font></p>
       </div>
       <!-- Szene 9ergebnis: Ergebnisanzeige (für Quiz und Ereignis) -->
       <div id="resultMessage" class="scene hidden">
@@ -94,6 +180,541 @@
   </div>
 
   <script src="script.js"></script>
-</body>
 
-</html>
+
+
+            <script>// --- Globale Variablen und Kartendeck ---
+let players = [];
+let playerCount = 0;
+let currentPlayerIndex = 0;
+let currentNameIndex = 0;
+let questionTimerInterval;
+
+// Array mit den gültigen Ereignisfeld-Positionen
+const eventFieldPositions = [2, 5, 9, 12, 16, 19, 23, 27, 30, 34, 37, 40, 44, 47, 49];
+
+// Das Kartendeck (3-stellige Codes, zufällig vergeben)
+const cards = {
+  // Quiz-Karten
+  "157": {
+    type: "quiz",
+    question: "Wann veröffentlichte Martin Luther seine 95 Thesen?",
+    options: { "A": "1512", "B": "1517", "C": "1521", "D": "1530" },
+    correct: "B"
+  },
+  "681": {
+    type: "quiz",
+    question: "Was steht in vielen evangelischen Kirchen im Mittelpunkt des Raumes?",
+    options: { "A": "Der Taufstein", "B": "Die Kanzel", "C": " Der Altar", "D": " Das Kreuz" },
+    correct: "B"
+  },
+  "789": {
+    type: "quiz",
+    question: "Welche Bedeutung hat die Bibel im evangelischen Kirchenraum?",
+    options: { "A": "Sie wird nur vom Pfarrer gelesen", "B": "Sie ist ein dekoratives Element", "C": "Sie steht symbolisch für das Wort Gottes", "D": "Sie wird im Tabernakel aufbewahrt" },
+    correct: "C"
+  },
+  "806": {
+    type: "quiz",
+    question: "Was ist ein typisches Element reformierter Kirchenräume?",
+    options: { "A": "Prunkvolle Altäre", "B": "Bilderzyklen", "C": "Leere weiße Wände", "D": "Goldene Kanzeln" },
+    correct: "C"
+  },
+  "812": {
+    type: "quiz",
+    question: "Was wurde durch den Gemeindegesang im Kirchenraum verändert?",
+    options: { "A": "Die Akustik", "B": "Die Rolle der Gemeinde", "C": "Die Architektur", "D": "Die Sitzordnung" },
+    correct: "B"
+  },
+  "802": {
+    type: "quiz",
+    question: "Was wurde durch die Reformation aus vielen Kirchen entfernt?",
+    options: { "A": "Orgeln", "B": "Fenster", "C": "Heiligenbilder", "D": "Sitzbänke" },
+    correct: "C"
+  },
+  "815": {
+    type: "quiz",
+    question: "Warum wurde die Kanzel oft erhöht gebaut?",
+    options: { "A": "Aus Respekt vor dem Pfarrer", "B": "Damit alle gut hören konnten", "C": "Aus ästhetischen Gründen", "D": " Um Platz zu sparen" },
+    correct: "B"
+  },
+  "804": {
+    type: "quiz",
+    question: "Warum sind viele evangelische Kirchenräume schlicht gestaltet?",
+    options: { "A": "Aus Kostengründen", "B": "Um das Wort Gottes in den Mittelpunkt zu stellen",   "C": "Wegen staatlicher Vorgaben", "D": "Aus architektonischer Mode" },
+    correct: "B"
+  },
+  "817": {
+    type: "quiz",
+    question: "Was symbolisiert der Taufstein im evangelischen Kirchenraum?",
+    options: { "A": "Die Aufnahme in die Kirche", "B": "Die Reinigung von Sünden", "C": "Die Erinnerung an Jesus", "D": "Die Verbindung zum Papst" },
+    correct: "A"
+  },
+  "742": {
+    type: "quiz",
+    question: "Warum wurde der Altar in evangelischen Kirchen oft nach vorne gerückt?",
+    options: { "A": "Um Platz für Chöre zu schaffen", "B": "Um näher bei der Gemeinde zu sein", "C": "Aus architektonischen Gründen", "D": "Wegen Brandschutz" },
+    correct: "B"
+  },
+  "867": {
+    type: "quiz",
+    question: "Welche Rolle spielt das Kreuz im evangelischen Kirchenraum?",
+    options: { "A": "Es wird angebetet", "B": "Es ist ein Erinnerungszeichen an das Leiden Christi", "C": "Es ist ein Schmuckelement", "D": "Es ersetzt die Kanzel" },
+    correct: "B"
+  },
+  "920": {
+    type: "quiz",
+    question: "Warum gibt es in evangelischen Kirchen oft keine Seitenaltäre?",
+    options: { "A": "Aus Platzgründen", "B": "Weil nur ein Altar nötig ist", "C": "Weil sie teuer sind", "D": "Weil sie katholisch geprägt sind" },
+    correct: "D"
+  },
+  "914": {
+    type: "quiz",
+    question: " Was ist ein typisches Merkmal evangelischer Kirchenfenster?",
+    options: { "A": "Bunte Glasmalereien mit Heiligen", "B": "Schlichte, klare Fenster", "C": "Fenster mit Tiermotiven", "D": "Fenster mit lateinischen Inschriften" },
+    correct: "B"
+  },
+  "284": {
+    type: "quiz",
+    question: "Welchen Kaiser konfrontierte Luther beim Reichstag zu Worms?",
+    options: { "A": "Friedrich III.", "B": "Maximilian I.", "C": "Karl V.", "D": "Ferdinand II." },
+    correct: "C"
+  },
+  "360": {
+    type: "quiz",
+    question: "Wie beeinflusste der Buchdruck die Verbreitung der Reformationsideen?",
+    options: { "A": "Er machte Schriften nur wenigen zugänglich.", "B": "Er verbreitete die Ideen schneller und kostengünstiger.", "C": "Er führte zu weniger Diskrepanzen.", "D": "Er hatte kaum Einfluss." },
+    correct: "B"
+  },
+  "476": {
+    type: "quiz",
+    question: "Welche Aussage beschreibt das „Priestertum aller Getauften“?",
+    options: { "A": "Nur Priester dürfen predigen", "B": "Alle Gläubigen haben Zugang zu Gott", "C": "Nur Männer dürfen taufen", "D": "Nur Bischöfe dürfen segnen" },
+    correct: "B"
+  },
+"602": {
+    type: "quiz",
+    question: "Welche Aussage beschreibt das „Priestertum aller Getauften“?",
+    options: { "A": "Nur Priester dürfen predigen", "B": "Alle Gläubigen haben Zugang zu Gott", "C": "Nur Männer dürfen taufen", "D": "Nur Bischöfe dürfen segnen" },
+    correct: "B"
+  },
+"635": {
+    type: "quiz",
+    question: "Warum sind viele evangelische Kirchenräume schlichter gestaltet?",
+    options: { "A": "Aus Geldmangel", "B": "Aus Respekt vor der katholischen Kirche", "C": "Um die Konzentration auf das Wort Gottes zu legen", "D": "Wegen staatlicher Vorgaben" },
+    correct: "C"
+  },
+  "092": {
+    type: "quiz",
+    question: "Welcher Reformator wirkte in der Schweiz und setzte Luthers Ideen ähnlich um?",
+    options: { "A": "Johannes Calvin", "B": "Ulrich Zwingli", "C": "Thomas Müntzer", "D": "Philipp Melanchthon" },
+    correct: "B"
+  },
+  "167": {
+    type: "quiz",
+    question: "Welche Sprache wird in evangelischen Gottesdiensten seit der Reformation verwendet?",
+    options: { "A": "Latein", "B": "Griechisch", "C": "Deutsch", "D": "Hebräisch" },
+    correct: "C"
+  },
+"205": {
+    type: "quiz",
+    question: "Was ist ein typisches Merkmal evangelischer Kirchenräume seit der Reformation?",
+    options: { "A": "Goldverzierte Altäre", "B": "Kanzel im Mittelpunkt", "C": "- Reliquienschreine", "D": "- Beichtstühle" },
+    correct: "B"
+  },
+"314": {
+    type: "quiz",
+    question: "Welches Element wurde durch die Reformation besonders betont?",
+    options: { "A": "Die Heiligenverehrung", "B": "- Die Bibel in der Landessprache", "C": "Die Pilgerreisen", "D": "Die Marienverehrung" },
+    correct: "B"
+  },
+"329": {
+    type: "quiz",
+    question: "Was fehlt häufig in evangelischen Kirchen im Vergleich zu katholischen?",
+    options: { "A": "Orgeln", "B": "Fenster", "C": "Heiligenfiguren", "D": "Sitzbänke" },
+    correct: "C"
+  },
+"354": {
+    type: "quiz",
+    question: "Welches musikalische Element wurde durch die Reformation gestärkt?",
+    options: { "A": "Gregorianischer Gesang", "B": "Gemeindegesang", "C": "Trommelmusik", "D": "Stille Andacht" },
+    correct: "B"
+  },
+"413": {
+    type: "quiz",
+    question: "Was ist ein sichtbares Zeichen reformatorischer Theologie im Kirchenraum",
+    options: { "A": "Der Papsstuhl", "B": "Die Bibel auf dem Altar", "C": "Der Rosenkranz", "D": "Die Monstranz" },
+    correct: "A"
+  },
+  "431": {
+    type: "quiz",
+    question: "Was war der Hauptkritikpunkt Luthers an der katholischen Kirche?",
+    options: { "A": "Der Ablasshandel", "B": "Die zu hohe Steuerlast", "C": "Das Fehlen von Bibellesungen", "D": "Die übertriebene Verehrung von Heiligen" },
+    correct: "A"
+  },
+  // Ereignis-Karten
+  "738": {
+    type: "event",
+    description: "Die Kirche droht mit dem Bann! Würfle eine gerade Zahl, sonst musst du eine Runde aussetzen."
+  },
+  "215": {
+    type: "event",
+    description: "Die Druckerpresse brummt – Du darfst sofort nochmal würfeln und den zusätzlichen Wert addieren."
+  },
+  "659": {
+    type: "event",
+    description: "Bauernaufstand im Dorf – Alle Spieler verlieren 1 Feld, während du 2 Felder vorziehst."
+  },
+  "384": {
+    type: "event",
+    description: "Ein geheimnisvoller Patron tritt auf – Entscheide: Erhalte 2 zusätzliche Felder oder zwinge einen Gegner, 1 Feld zurückzugehen."
+  },
+  "902": {
+    type: "event",
+    description: "Die Weissagung des Predigers – Beantworte eine zusätzliche Quizfrage: richtig = +4 Felder, falsch = -2 Felder."
+  },
+  "167": {
+    type: "event",
+    description: "Ein Feuer der Leidenschaft – Wähle: Runde aussetzen oder 3 Felder zurück."
+  },
+  "500": {
+    type: "event",
+    description: "Die Intrige am Hof – Du verlierst 3 Felder, bekommst aber einen Sonderzug (nochmal würfeln)."
+  },
+  // Glücks-Karten
+  "321": {
+    type: "luck",
+    description: "Engelsgesang – Du rückst 3 Felder vor."
+  },
+  "444": {
+    type: "luck",
+    description: "Erfolgreiche Predigt – Alle Gegner verlieren 1 Feld."
+  },
+  "278": {
+    type: "luck",
+    description: "Verkaufte Schriften – Du erhältst 2 zusätzliche Felder."
+  },
+  "577": {
+    type: "luck",
+    description: "Gottes Segen – Du darfst einen zusätzlichen Zug machen."
+  },
+  "119": {
+    type: "luck",
+    description: "Starker Glaube – Ziehe 3 Felder vorwärts."
+  }
+};
+
+// --- Szenensteuerung: Hilfsfunktionen ---
+function showOnly(sceneId) {
+  const scenes = document.querySelectorAll("#gameContainer > .scene");
+  scenes.forEach(scene => scene.classList.add("hidden"));
+  document.getElementById(sceneId).classList.remove("hidden");
+}
+
+function hideScene(sceneId) {
+  document.getElementById(sceneId).classList.add("hidden");
+}
+
+function hideAllGameScenes() {
+  const scenes = document.querySelectorAll("#gameContainer > .scene");
+  scenes.forEach(scene => scene.classList.add("hidden"));
+}
+
+function updatePlayerList() {
+  const list = document.getElementById("playerList");
+  let html = "<h3>Spieler:</h3>";
+  players.forEach(player => {
+    html += `<p>${player.name} – Position: ${player.position}</p>`;
+  });
+  list.innerHTML = html;
+}
+
+// --- Phase 1: Spielerzahl wählen ---
+function setPlayerCount(count) {
+  playerCount = count;
+  players = new Array(count);
+  currentNameIndex = 0;
+  document.getElementById("homescreen").classList.add("hidden");
+  document.getElementById("nameInput").classList.remove("hidden");
+  document.getElementById("namePrompt").innerText = `Spieler ${currentNameIndex + 1}, wie heißt du?`;
+}
+
+// --- Phase 2-5: Namenseingabe (sequentiell) ---
+function nextName() {
+  const input = document.getElementById("playerNameInput").value.trim();
+  if (!/^[A-Za-z]+$/.test(input) || input.length === 0) {
+    alert("Ungültiger Name. Bitte nur Buchstaben (max. 12 Zeichen) verwenden.");
+    return;
+  }
+  players[currentNameIndex] = { name: input, position: 0 };
+  currentNameIndex++;
+  document.getElementById("playerNameInput").value = "";
+  if (currentNameIndex < playerCount) {
+    document.getElementById("namePrompt").innerText = `Spieler ${currentNameIndex + 1}, wie heißt du?`;
+  } else {
+    document.getElementById("nameInput").classList.add("hidden");
+    document.getElementById("gameArea").classList.remove("hidden");
+    updatePlayerList();
+    startTurn();
+  }
+}
+
+// --- Phase 6: "Du bist am Zug!" (4 Sekunden) ---
+function startTurn() {
+  updatePlayerList();
+  document.getElementById("turnInfoText").innerText = `${players[currentPlayerIndex].name}, du bist am Zug!`;
+  showOnly("turnInfo");
+  setTimeout(() => {
+    hideAllGameScenes();
+    showDiceRoll();
+  }, 4000);
+}
+
+// --- Phase 7: Würfeln – manuelle Eingabe der gewürfelten Zahl ---
+function showDiceRoll() {
+  document.getElementById("diceRollText").innerText = `${players[currentPlayerIndex].name}, du musst würfeln!`;
+  showOnly("diceRoll");
+}
+
+function rollDice(number) {
+  hideScene("diceRoll");
+  players[currentPlayerIndex].position += number;
+  updatePlayerList();
+  // Wird der Spieler auf ein Ereignisfeld gesetzt?
+  if (eventFieldPositions.includes(players[currentPlayerIndex].position)) {
+    showOnly("eventCheck");
+  } else {
+    nextTurn();
+  }
+}
+
+// --- Phase 8: Kartencode eingeben ---
+function checkEvent() {
+  const code = document.getElementById("cardCodeInput").value.trim();
+  hideScene("eventCheck");
+
+  if (!cards.hasOwnProperty(code)) {
+    alert("Ungültiger Kartencode!");
+    nextTurn();
+    return;
+  }
+  const card = cards[code];
+  if (card.type === "quiz") {
+    showCardType("Quizkarte", "blue");
+    setTimeout(() => {
+      showQuestionArea(card);
+    }, 2000);
+  } else if (card.type === "event") {
+    showCardType("Ereigniskarte", "red");
+    setTimeout(() => {
+      processEventCard(card);
+    }, 2000);
+  } else if (card.type === "luck") {
+    showCardType("Glückskarte", "green");
+    processLuckCard(card);
+  }
+}
+
+// --- Szene 9: Kartentyp anzeigen ---
+function showCardType(text, color) {
+  const ct = document.getElementById("cardTypeText");
+  ct.innerText = text;
+  ct.style.backgroundColor = color;
+  showOnly("cardType");
+  setTimeout(() => { hideScene("cardType"); }, 2000);
+}
+
+// --- Szene 9a: Quizfrage anzeigen ---
+function showQuestionArea(card) {
+  document.getElementById("questionText").innerText = card.question;
+  const optionsDiv = document.getElementById("answerOptions");
+  optionsDiv.innerHTML = "";
+  for (const key in card.options) {
+    const btn = document.createElement("button");
+    btn.innerText = `${key}) ${card.options[key]}`;
+    btn.onclick = () => submitQuizAnswer(key === card.correct);
+    optionsDiv.appendChild(btn);
+  }
+  showOnly("questionArea");
+  startQuestionTimer(9);
+}
+
+function startQuestionTimer(seconds) {
+  let timeLeft = seconds;
+  document.getElementById("questionTimer").innerText = timeLeft;
+  questionTimerInterval = setInterval(() => {
+    timeLeft--;
+    document.getElementById("questionTimer").innerText = timeLeft;
+    if (timeLeft <= 0) {
+      clearInterval(questionTimerInterval);
+      submitQuizAnswer(false);
+    }
+  }, 1000);
+}
+
+function submitQuizAnswer(correct) {
+  clearInterval(questionTimerInterval);
+  hideScene("questionArea");
+  let resultMsg = "";
+  if (correct) {
+    players[currentPlayerIndex].position += 2;
+    resultMsg = "Richtig! Du darfst 2 Felder vor.";
+  } else {
+    players[currentPlayerIndex].position -= 2;
+    resultMsg = "Falsch! Du musst 2 Felder zurück.";
+  }
+  updatePlayerList();
+  showResultMessage(resultMsg);
+}
+
+// --- Szene 9b: Ereigniskarte Aktion ---
+function processEventCard(card) {
+  if (card.description.includes("Bann")) {
+    showOnly("eventAction");
+  } else if (card.description.includes("Druckerpresse")) {
+    showOnly("eventAction");
+  } else if (card.description.includes("Bauernaufstand")) {
+    players.forEach((p, i) => { if (i !== currentPlayerIndex) p.position -= 1; });
+    players[currentPlayerIndex].position += 2;
+    updatePlayerList();
+    showResultMessage("Bauernaufstand: Alle verlieren 1 Feld, du bekommst 2 Felder Extra.");
+  } else if (card.description.includes("geheimnisvoller Patron")) {
+    processPatronChoice();
+  } else if (card.description.includes("Weissagung")) {
+    processWeissagungQuestion();
+  } else if (card.description.includes("Feuer der Leidenschaft")) {
+    processFeuerChoice();
+  } else if (card.description.includes("Intrige am Hof")) {
+    players[currentPlayerIndex].position -= 3;
+    updatePlayerList();
+    showResultMessage("Intrige am Hof: Du verlierst 3 Felder, bekommst aber einen Sonderzug.");
+  } else {
+    showResultMessage(card.description);
+  }
+}
+  
+// --- Für "Ein geheimnisvoller Patron" ---
+function processPatronChoice() {
+  const container = document.getElementById("resultText");
+  container.innerHTML = "Ein geheimnisvoller Patron! Wähle: <br>" +
+                          '<button onclick="patronChoice(\'self\')">2 Felder vor</button>' +
+                          '<button onclick="patronChoice(\'opponent\')">Gegner -1 Feld</button>';
+  showOnly("resultMessage");
+  setTimeout(() => { if(!document.getElementById("resultMessage").classList.contains("hidden")) patronChoice('self'); }, 9000);
+}
+
+function patronChoice(choice) {
+  hideScene("resultMessage");
+  if (choice === 'self') {
+    players[currentPlayerIndex].position += 2;
+    updatePlayerList();
+    showResultMessage("Du hast 2 Felder vor erhalten.");
+  } else {
+    const indices = [];
+    for (let i = 0; i < players.length; i++) {
+      if (i !== currentPlayerIndex) indices.push(i);
+    }
+    const oppIndex = indices[Math.floor(Math.random() * indices.length)];
+    players[oppIndex].position -= 1;
+    updatePlayerList();
+    showResultMessage(`Gegner ${players[oppIndex].name} verliert 1 Feld.`);
+  }
+}
+
+// --- Für "Die Weissagung des Predigers" ---
+function processWeissagungQuestion() {
+  document.getElementById("questionText").innerText = "Weissagung: Was prophezeite der Prediger?";
+  const optionsDiv = document.getElementById("answerOptions");
+  optionsDiv.innerHTML = "";
+  const answers = ["Frieden", "Kriege", "Reichtum", "Not"];
+  answers.forEach(answer => {
+    const btn = document.createElement("button");
+    btn.innerText = answer;
+    btn.onclick = () => processWeissagungAnswer(answer === "Frieden");
+    optionsDiv.appendChild(btn);
+  });
+  showOnly("questionArea");
+  startQuestionTimer(9);
+}
+
+function processWeissagungAnswer(correct) {
+  clearInterval(questionTimerInterval);
+  hideScene("questionArea");
+  let resultMsg = "";
+  if (correct) {
+    players[currentPlayerIndex].position += 4;
+    resultMsg = "Richtig! Du erhältst 4 Felder vor.";
+  } else {
+    players[currentPlayerIndex].position -= 2;
+    resultMsg = "Falsch! Du musst 2 Felder zurück.";
+  }
+  updatePlayerList();
+  showResultMessage(resultMsg);
+}
+
+// --- Für "Ein Feuer der Leidenschaft" ---
+function processFeuerChoice() {
+  const container = document.getElementById("resultText");
+  container.innerHTML = "Ein Feuer der Leidenschaft! Wähle: <br>" +
+                          '<button onclick="feuerChoice(\'lose\')">3 Felder zurück</button>' +
+                          '<button onclick="feuerChoice(\'skip\')">Runde aussetzen</button>';
+  showOnly("resultMessage");
+  setTimeout(() => { if(!document.getElementById("resultMessage").classList.contains("hidden")) feuerChoice('skip'); }, 9000);
+}
+
+function feuerChoice(choice) {
+  hideScene("resultMessage");
+  if (choice === 'lose') {
+    players[currentPlayerIndex].position -= 3;
+    updatePlayerList();
+    showResultMessage("Du verlierst 3 Felder.");
+  } else {
+    showResultMessage("Du setzt diese Runde aus.");
+    setTimeout(nextTurn, 9000);
+    return;
+  }
+  setTimeout(nextTurn, 9000);
+}
+
+// --- Für Glücks-Karten ---
+function processLuckCard(card) {
+  if (card.description.includes("Engelsgesang")) {
+    players[currentPlayerIndex].position += 3;
+    updatePlayerList();
+    showResultMessage("Engelsgesang: Du rückst 3 Felder vor.");
+  } else if (card.description.includes("Erfolgreiche Predigt")) {
+    players.forEach((p, i) => { if (i !== currentPlayerIndex) p.position -= 1; });
+    updatePlayerList();
+    showResultMessage("Erfolgreiche Predigt: Alle Gegner verlieren 1 Feld.");
+  } else if (card.description.includes("Verkaufte Schriften")) {
+    players[currentPlayerIndex].position += 2;
+    updatePlayerList();
+    showResultMessage("Verkaufte Schriften: Du erhältst 2 zusätzliche Felder.");
+  } else if (card.description.includes("Gottes Segen")) {
+    showResultMessage("Gottes Segen: Du darfst einen zusätzlichen Zug machen.");
+    setTimeout(() => { showDiceRoll(); }, 9000);
+    return;
+  } else if (card.description.includes("Starker Glaube")) {
+    players[currentPlayerIndex].position += 3;
+    updatePlayerList();
+    showResultMessage("Starker Glaube: Ziehe 3 Felder vorwärts.");
+  }
+  setTimeout(nextTurn, 9000);
+}
+
+// --- Gemeinsame Ergebnisanzeige (Szene 9ergebnis) – 9 Sekunden lang ---
+function showResultMessage(message) {
+  document.getElementById("resultText").innerText = message;
+  showOnly("resultMessage");
+  setTimeout(nextTurn, 9000);
+}
+
+// --- Phase 10: Nächste Runde ---
+function nextTurn() {
+  hideAllGameScenes();
+  currentPlayerIndex = (currentPlayerIndex + 1) % playerCount;
+  startTurn();
+}</script>
+        
+    
+</body>
