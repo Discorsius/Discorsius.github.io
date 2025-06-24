@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Luthers Pfad</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Szene 1: Spielerzahl wählen -->
+  <div id="homescreen">
+    <h1>Luthers Pfad</h1>
+    <h2>Spieleranzahl wählen:</h2>
+    <button onclick="setPlayerCount(2)">2 Spieler</button>
+    <button onclick="setPlayerCount(3)">3 Spieler</button>
+    <button onclick="setPlayerCount(4)">4 Spieler</button>
+  </div>
+
+  <!-- Szene 2-5: Namenseingabe (sequentiell) -->
+  <div id="nameInput" class="hidden">
+    <h2 id="namePrompt">Spieler ? , wie heißt du?</h2>
+    <input type="text" id="playerNameInput" maxlength="12" pattern="[A-Za-z]+">
+    <button onclick="nextName()">Weiter</button>
+  </div>
+
+  <!-- Gesamter Spielbereich -->
+  <div id="gameArea" class="hidden">
+    <!-- Linke Leiste: Spielerstatus -->
+    <aside id="playerList">
+      <!-- Hier erscheinen die Spielernamen und Positionen -->
+    </aside>
+    <!-- Vertikale Trennlinie -->
+    <div class="divider"></div>
+    <!-- Hauptbereich / Szenencontainer -->
+    <main id="gameContainer">
+      <!-- Szene 6: "Du bist am Zug" -->
+      <div id="turnInfo" class="scene hidden">
+        <h2 id="turnInfoText"></h2>
+      </div>
+      <!-- Szene 7: Würfeln -->
+      <div id="diceRoll" class="scene hidden">
+        <h2 id="diceRollText"></h2>
+        <div class="dice-buttons">
+          <button onclick="rollDice(1)">1</button>
+          <button onclick="rollDice(2)">2</button>
+          <button onclick="rollDice(3)">3</button>
+          <button onclick="rollDice(4)">4</button>
+          <button onclick="rollDice(5)">5</button>
+          <button onclick="rollDice(6)">6</button>
+        </div>
+      </div>
+      <!-- Szene 8: Kartencode eingeben -->
+      <div id="eventCheck" class="scene hidden">
+        <h2>Kartencode eingeben (3-stellig):</h2>
+        <input type="text" id="cardCodeInput" maxlength="3">
+        <button onclick="checkEvent()">Prüfen</button>
+      </div>
+      <!-- Szene 9: Kartentyp anzeigen -->
+      <div id="cardType" class="scene hidden">
+        <h2 id="cardTypeText"></h2>
+      </div>
+      <!-- Szene 9a: Quizfrage (bei Kartencode 001) -->
+      <div id="questionArea" class="scene hidden">
+        <h2>Frage:</h2>
+        <p id="questionText"></p>
+        <div id="answerOptions"></div>
+        <p class="timer">Zeit: <span id="questionTimer">9</span> Sekunden</p>
+      </div>
+      <!-- Szene 9b: Ereigniskarte Aktion (bei Kartencode 002) -->
+      <div id="eventAction" class="scene hidden">
+        <h2>Ereigniskarte Aktion</h2>
+        <p id="eventActionText">Die Kirche droht mit Bann! Würfle eine gerade Zahl, sonst gehe 2 Felder zurück.</p>
+        <div class="dice-buttons">
+          <button onclick="rollEventDice(1)">1</button>
+          <button onclick="rollEventDice(2)">2</button>
+          <button onclick="rollEventDice(3)">3</button>
+          <button onclick="rollEventDice(4)">4</button>
+          <button onclick="rollEventDice(5)">5</button>
+          <button onclick="rollEventDice(6)">6</button>
+        </div>
+      </div>
+      <!-- Szene 9c: Glückskarte Nachricht (bei Kartencode 003) -->
+      <div id="luckMessage" class="scene hidden">
+        <h2>Glückskarte</h2>
+        <p id="luckText">Die Kirche hat dich erneut aufgenommen! Gehe 3 Felder vor.</p>
+      </div>
+      <!-- Szene 9ergebnis: Ergebnisanzeige (für Quiz und Ereignis) -->
+      <div id="resultMessage" class="scene hidden">
+        <h2 id="resultText"></h2>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
